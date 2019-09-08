@@ -20,5 +20,20 @@
   <%= @event.end_date %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Edit', edit_event_path(@event) %> 
+ <%= link_to "参加コメント入力", new_event_participant_path(@event), class: "btn btn-info" %>
 <%= link_to 'Back', events_path %>
+
+
+<% @event.participants.reverse_each do |participants| %>
+  <div class="col-md-12">
+    更新日：<%= participants.updated_at.strftime("%Y年%m月%d日") %>
+  </div>
+  <div class="col-md-12">
+    名前：<%= participants.user %>
+  </div>
+  <div class="col-md-12">
+    <%= link_to "編集", edit_event_participant_path(participants) %>
+    <%= link_to "削除", event_participant_path(participants) , method: :delete %>
+  </div>
+<% end %>

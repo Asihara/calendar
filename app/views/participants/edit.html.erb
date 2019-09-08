@@ -1,0 +1,9 @@
+<h1>コメント入力画面</h1>
+<%= form_with model: @participant, url: event_participant_path ,local: true do |form| %>
+  <p>
+    名前:<br>
+    <%= form.text_field :user %>
+  </p>
+  
+  <%= form.submit "更新" %>
+<% end %>
